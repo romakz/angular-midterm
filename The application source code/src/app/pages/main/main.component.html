@@ -1,0 +1,41 @@
+<main>
+  <div class="wrapper">
+
+    <div class="content">
+
+      <div class="tag-menu">
+
+        <mat-chip-list aria-label="food selection">
+          <mat-chip [ngClass]="{'is-select': select == 'all'}" (click)="setSelect('all')">All</mat-chip>
+          <mat-chip [ngClass]="{'is-select': select == 'burgers'}"  (click)="setSelect('burgers')">Burgers</mat-chip>
+          <mat-chip [ngClass]="{'is-select': select == 'sushi'}"  (click)="setSelect('sushi')">Sushi</mat-chip>
+          <mat-chip [ngClass]="{'is-select': select == 'pizza'}"  (click)="setSelect('pizza')">Pizza</mat-chip>
+          <mat-chip [ngClass]="{'is-select': select == 'coffees'}"  (click)="setSelect('coffees')">Coffee</mat-chip>
+          <mat-chip [ngClass]="{'is-select': select == 'teas'}"  (click)="setSelect('teas')">Tea</mat-chip>
+        </mat-chip-list>
+
+      </div>
+
+      <app-search (submitSearchStr)="acceptSearchStr($event)" [answer]="searchArray"></app-search>
+
+      <div class="carousel-box">
+        <app-carousel [restaurants]="getAllRestaurants()"></app-carousel>
+      </div>
+
+      <div class="food-flex-box">
+        <h2>Restaurants</h2>
+
+        <div class="card-box">
+          <app-restaurant-card style="margin-bottom: 30px"
+                               *ngFor="let restaurant of restaurants"
+                               [routerLink]="['/restaurant', restaurant.id]"
+                               [restaurant]="restaurant">
+          </app-restaurant-card>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</main>

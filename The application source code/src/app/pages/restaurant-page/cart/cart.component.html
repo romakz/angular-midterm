@@ -1,0 +1,22 @@
+<div class="cart">
+
+  <div class="cart-body">
+    <div class="cart-title">
+      Мой заказ
+    </div>
+
+    <div class="cart-items">
+      <div *ngFor="let item of cartItems; let i = index">{{ item.name }}: {{ item.price }}₸ <button (click)="remove(i)">delete</button></div>
+      <div *ngIf="showDelivery">Доставка: {{ restaurant.deliverCost }} ₸</div>
+    </div>
+
+    <div class="cart-info">
+      <div><span>Итого: </span> {{ calculateTotalCost() }} ₸</div>
+    </div>
+  </div>
+
+  <div class="cart-btn">
+    <button (click)="makeOrder()">Оформить заказ</button>
+  </div>
+
+</div>
